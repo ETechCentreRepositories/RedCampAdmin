@@ -12,9 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
+
+
+Route::get('/home', 'PagesController@home');
+Route::get('/user', 'PagesController@user');
+
+Route::resource('user', 'UsersController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');

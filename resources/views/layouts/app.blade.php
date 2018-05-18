@@ -34,7 +34,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="navList"><a class="userNav nav-link" href="/user"><div class="navLabels">Users</div></a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -68,6 +68,7 @@
         </nav>
 
         <main class="py-4">
+            @include('inc.messages')
             @yield('content')
         </main>
     </div>
