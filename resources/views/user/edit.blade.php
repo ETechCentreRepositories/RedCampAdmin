@@ -13,6 +13,7 @@
                 <th>Mobile Number</th>
                 <th>School</th>
                 <th>diet_requirements</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +25,7 @@
                     <td>{{$user->mobile}}</td>
                     <td>{{$user->school}}</td>
                     <td>{{$user->diet_requirements}}</td>
+                    <td>{{$user->statuses['status_name']}}</td>
                 </tr>
         </tbody>
     </table>
