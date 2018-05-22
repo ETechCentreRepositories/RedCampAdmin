@@ -13,6 +13,7 @@
                 <th>Mobile Number</th>
                 <th>School</th>
                 <th>diet_requirements</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -24,18 +25,19 @@
                     <td>{{$user->mobile}}</td>
                     <td>{{$user->school}}</td>
                     <td>{{$user->diet_requirements}}</td>
+                    <td>{{$user->statuses['status_name']}}</td>
                 </tr>
         </tbody>
     </table>
     {!! Form::open(['action' => ['UsersController@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
         {{Form::hidden('statuses_id', '3', ['class' => 'form-control'])}}
         {{Form::hidden('_method', 'PUT')}}
-        {{Form::submit('Rejected', ['class'=>'btn btn-primary btn-lg btn-danger btn-rejected'])}}
+        {{Form::submit('Reject', ['class'=>'btn btn-primary btn-danger btn-rejected'])}}
     {!! Form::close() !!}
     {!! Form::open(['action' => ['UsersController@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
         {{Form::hidden('statuses_id', '2', ['class' => 'form-control'])}}
         {{Form::hidden('_method', 'PUT')}}
-        {{Form::submit('Accepted', ['class'=>'btn btn-primary btn-lg btn-success btn-accepted'])}}
+        {{Form::submit('Accept', ['class'=>'btn btn-primary btn-success btn-accepted'])}}
     {!! Form::close() !!}
 </div>
 @endsection

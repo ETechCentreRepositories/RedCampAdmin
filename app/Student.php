@@ -11,4 +11,8 @@ class Student extends Model
 
     //Timestamps
     public $timestamps = false;
+    
+    public function statuses() {
+        return $this->belongsTo('App\Status');
+    }
 }

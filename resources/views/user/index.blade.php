@@ -8,6 +8,7 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Status</th>
                 <th class="emptyHeader"></th>
             </tr>
         </thead>
@@ -17,6 +18,7 @@
                     <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
+                    <td>{{$user->statuses['status_name']}}</td>
                     <td>
                         <div class="d-flex flex-column">
                             <div class="d-flex flex-row transfer-buttons">
