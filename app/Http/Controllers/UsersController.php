@@ -88,11 +88,11 @@ class UsersController extends Controller
         if ($user->statuses_id != $request->input('statuses_id')){
             $user->statuses_id = $request->input('statuses_id');
 
-            // Mail::send('emails.mailEvent', ['user' => $user], function ($message) use ($user) {
-            //     $status = $user->statuses['status_name'];
-            //     $message->from('trueno@etechnologycentre.com', 'RedCamp');
-            //     $message->to($user->email)->subject("RedCamp Application Review");
-            // });
+            Mail::send('emails.mailEvent', ['user' => $user], function ($message) use ($user) {
+                $status = $user->statuses['status_name'];
+                $message->from('trueno@etechnologycentre.com', 'RedCamp');
+                $message->to($user->email)->subject("RedCamp Application Review");
+            });
         } else {
             $user->name = $request->input('name');
             $user->email = $request->input('email');
