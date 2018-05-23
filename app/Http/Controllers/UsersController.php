@@ -84,6 +84,10 @@ class UsersController extends Controller
     {
         $user = Student::find($id);
 
+        // if ($user->statuses_id != $request->input('statuses_id')){
+            
+        // }
+
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->nric = $request->input('nric');
@@ -91,14 +95,14 @@ class UsersController extends Controller
         $user->mobile = $request->input('mobile');
         $user->school = $request->input('school');
         $user->diet_requirements = $request->input('diet_requirements');
-        $user->password = Hash::make($request['password']);
+        $user->password = sha1($request['password']);
         $user->statuses_id = $request->input('statuses_id');
         $user->save();
-    
+
         Mail::send('emails.mailEvent', ['user' => $user], function ($message) use ($user) {
             $status = $user->statuses['status_name'];
             $message->from('trueno@etechnologycentre.com', 'RedCamp');
-            $message->to($user->email)->subject("RedCamp Application Approval");
+            $message->to($user->email)->subject("RedCamp Application Review");
         });
 
         return redirect('/user')->with('success', 'Updated');
