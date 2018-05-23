@@ -26,14 +26,39 @@
   width: 100%;
 }
 
-.btn-rejected {
-  float: left;
+.pagination {
+  margin: auto;
 }
 
-.btn-accepted {
+.btn-export {
   float: right;
 }
 
-.pagination {
-  margin: auto;
+.btn-accepted, .btn-rejected {
+  margin-bottom: 5%;
+  width: 35%;
+}
+
+.leftStatus {
+  float: left;
+}
+
+.rightStatus {
+  float: right;
+}
+
+.vLine {
+  max-width: 5% !important;
+}
+
+.centerStatus {
+  padding-left: 16.66666667%;
+}
+
+.row {
+  text-align: center;
+}
+
+.noPadding {
+  padding: 0;
 }

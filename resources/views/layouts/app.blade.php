@@ -17,14 +17,7 @@
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="http://localhost:8000/storage/logo/logo.png">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    {{-- <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script> --}}
-    {{-- <script type="text/javascript" src="path_to_locally_stored_copy_of_mandrill_API"></script> --}}
-{{-- <script type="text/javascript">
-   (function(){
-      emailjs.init("user_1Nl0qoiGYonoaCrIOcgfH");
-   })();
-</script> --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

@@ -80,38 +80,40 @@
     {!! Form::close() !!}
 
     <hr>
-
+        <div class="centerStatus">
     <h3>Status</h3>
-    </table>
+    <div class="row">
+    <div class="col-md-5 noPadding">
     {!! Form::open(['action' => ['UsersController@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-        {{Form::hidden('name', $user->name, ['class' => 'form-control'])}}
-        {{Form::hidden('email', $user->email, ['class' => 'form-control'])}}
-        {{Form::hidden('nric', $user->nric, ['class' => 'form-control'])}}
-        {{Form::hidden('dob', $user->dob, ['class' => 'form-control'])}}
-        {{Form::hidden('mobile', $user->mobile, ['class' => 'form-control'])}}
-        {{Form::hidden('school', $user->school, ['class' => 'form-control'])}}
-        {{Form::hidden('diet_requirements', $user->diet_requirements, ['class' => 'form-control'])}}
-        {{Form::hidden('password', $user->password, ['class' => 'form-control'])}}
         {{Form::hidden('statuses_id', '3', ['class' => 'form-control'])}}
+        <br>
         {{Form::hidden('_method', 'PUT')}}
-        {{Form::submit('Reject', ['class'=>'btn btn-primary btn-lg btn-danger btn-rejected','onclick'=>'sendMail()'])}}
+        {{Form::submit('Reject', ['class'=>'btn btn-primary btn-lg btn-danger btn-rejected', 'id'=>'rejected','disabled'])}}
     {!! Form::close() !!}
-
+    </div>
+    <div class="col-md-5 noPadding">
     {!! Form::open(['action' => ['UsersController@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-        {{Form::hidden('name', $user->name, ['class' => 'form-control'])}}
-        {{Form::hidden('email', $user->email, ['class' => 'form-control'])}}
-        {{Form::hidden('nric', $user->nric, ['class' => 'form-control'])}}
-        {{Form::hidden('dob', $user->dob, ['class' => 'form-control'])}}
-        {{Form::hidden('mobile', $user->mobile, ['class' => 'form-control'])}}
-        {{Form::hidden('school', $user->school, ['class' => 'form-control'])}}
-        {{Form::hidden('diet_requirements', $user->diet_requirements, ['class' => 'form-control'])}}
-        {{Form::hidden('password', $user->password, ['class' => 'form-control'])}}
         {{Form::hidden('statuses_id', '2', ['class' => 'form-control'])}}
+        <br>
         {{Form::hidden('_method', 'PUT')}}
-        {{-- <a href="mailto:{{$user->email}}?Subject=Hello%20again"> --}}
-            {{Form::submit('Accept', ['class'=>'btn btn-primary btn-lg btn-success btn-accepted','onclick'=>'sendMail()'])}}
-        {{-- </a> --}}
+        {{Form::submit('Accept', ['class'=>'btn btn-primary btn-lg btn-success btn-accepted', 'id'=>'accepted','disabled'])}}
     {!! Form::close() !!}
+        </div>
+    </div>
+        </div>
     <br>
 </div>
 @endsection
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        if ({{$user->statuses_id}} == 2) {
+            document.getElementById("rejected").disabled = false;
+            return true;
+        } else if ({{$user->statuses_id}} == 3) {
+            document.getElementById("accepted").disabled = false;
+            return true;
+        }
+    });
+</script>

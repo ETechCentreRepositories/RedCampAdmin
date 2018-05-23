@@ -84,28 +84,29 @@ class UsersController extends Controller
     {
         $user = Student::find($id);
 
-        // if ($user->statuses_id != $request->input('statuses_id')){
-            
-        // }
+        
+        if ($user->statuses_id != $request->input('statuses_id')){
+            $user->statuses_id = $request->input('statuses_id');
 
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->nric = $request->input('nric');
-        $user->dob = $request->input('dob');
-        $user->mobile = $request->input('mobile');
-        $user->school = $request->input('school');
-        $user->diet_requirements = $request->input('diet_requirements');
-        $user->password = sha1($request['password']);
-        $user->statuses_id = $request->input('statuses_id');
+            // Mail::send('emails.mailEvent', ['user' => $user], function ($message) use ($user) {
+            //     $status = $user->statuses['status_name'];
+            //     $message->from('trueno@etechnologycentre.com', 'RedCamp');
+            //     $message->to($user->email)->subject("RedCamp Application Review");
+            // });
+        } else {
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->nric = $request->input('nric');
+            $user->dob = $request->input('dob');
+            $user->mobile = $request->input('mobile');
+            $user->school = $request->input('school');
+            $user->diet_requirements = $request->input('diet_requirements');
+            $user->password = sha1($request['password']);
+            $user->statuses_id = $request->input('statuses_id');
+        }
         $user->save();
 
-        Mail::send('emails.mailEvent', ['user' => $user], function ($message) use ($user) {
-            $status = $user->statuses['status_name'];
-            $message->from('trueno@etechnologycentre.com', 'RedCamp');
-            $message->to($user->email)->subject("RedCamp Application Review");
-        });
-
-        return redirect('/user')->with('success', 'Updated');
+        return redirect('/user')->with('success', 'User Updated');
     }
 
     /**
