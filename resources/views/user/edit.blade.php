@@ -110,10 +110,11 @@
     $(document).ready(function(){
         if ({{$user->statuses_id}} == 2) {
             document.getElementById("rejected").disabled = false;
-            return true;
         } else if ({{$user->statuses_id}} == 3) {
             document.getElementById("accepted").disabled = false;
-            return true;
+        } else {
+            document.getElementById("rejected").disabled = false;
+            document.getElementById("accepted").disabled = false;
         }
     });
 </script>
