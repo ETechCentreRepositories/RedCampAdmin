@@ -20,7 +20,7 @@ class UsersController extends Controller
         $user_id = auth()->user()->id;
         $users_id = User::find($user_id);
 
-        $users = Student::orderBy('id','asc')->paginate(10);
+        $users = Student::orderBy('id','asc')->get();
 
         return view('user.index')->with('users_id', $users_id)->with('users',$users);
     }
