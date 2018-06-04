@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <a href="{{ route('export.file',['type'=>'csv']) }}"><button type="button" class="btn btn-inflow btn-warning">Export</button></a>
+    <a href="{{ route('export.file',['type'=>'csv']) }}"><button type="button" class="btn btn-export btn-warning">Export</button></a>
     <br><br>
     <table class="table table-striped" id="createTransferRequestTable">
         <thead>

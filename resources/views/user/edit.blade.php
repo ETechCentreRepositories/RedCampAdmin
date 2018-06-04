@@ -113,15 +113,14 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
-	$(document).ready(function(){
-	    if ({{$user->statuses_id}} == 2) {
-	        document.getElementById("rejected").disabled = false;
-	    } else if ({{$user->statuses_id}} == 3) {
-	        document.getElementById("accepted").disabled = false;
-	    } else {
-	        document.getElementById("rejected").disabled = false;
-	        document.getElementById("accepted").disabled = false;
-	    }
-	    
-	});
+    $(document).ready(function(){
+        if ({{$user->statuses_id}} == 2) {
+            document.getElementById("rejected").disabled = false;
+        } else if ({{$user->statuses_id}} == 3) {
+            document.getElementById("accepted").disabled = false;
+        } else {
+            document.getElementById("rejected").disabled = false;
+            document.getElementById("accepted").disabled = false;
+        }
+    });
 </script>
