@@ -44,7 +44,7 @@
                                 <div class="d-flex flex-column">
                                     <div class="d-flex flex-row transfer-buttons">
                                         <div class="p-2">
-                                            <a href="/redcampadmin/user/{{$user->id}}/edit"><button type="button" class="btn btn-primary action-buttons">Edit</button></a>
+                                            <a href="/user/{{$user->id}}/edit"><button type="button" class="btn btn-primary action-buttons">Edit</button></a>
                                         </div>
                                         <div class="p-2">
                                             {!!Form::open(['action' => ['UsersController@destroy', $user->id], 'method' => 'POST', 'class' => 'deleteButton'])!!}
