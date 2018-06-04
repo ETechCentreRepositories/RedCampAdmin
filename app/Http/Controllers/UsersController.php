@@ -21,8 +21,12 @@ class UsersController extends Controller
         $users_id = User::find($user_id);
 
         $users = Student::orderBy('id','asc')->get();
+        $pendings = Student::orderBy('id','asc')->where('statuses_id', '=', '1')->get();
+        $accepteds = Student::orderBy('id','asc')->where('statuses_id', '=', '2')->get();
+        $rejecteds = Student::orderBy('id','asc')->where('statuses_id', '=', '3')->get();
 
-        return view('user.index')->with('users_id', $users_id)->with('users',$users);
+
+        return view('user.index')->with('users_id', $users_id)->with('users',$users)->with('pendings',$pendings)->with('accepteds',$accepteds)->with('rejecteds',$rejecteds);
     }
 
     /**
