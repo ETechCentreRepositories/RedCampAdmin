@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="container">
+    <a href="{{ route('export.file',['type'=>'csv']) }}"><button type="button" class="btn btn-inflow btn-warning">Export</button></a>
+    <br><br>
     <table class="table table-striped" id="createTransferRequestTable">
         <thead>
             <tr>
@@ -13,9 +15,11 @@
             </tr>
         </thead>
         <tbody id="addTransferRequestContent">
+        <?php $count = 1; ?>
             @foreach($users as $user)
                 <tr>
-                    <td>{{$user->id}}</td>
+                <?php $counted = $count++; ?>
+                    <td>{{$counted}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->statuses['status_name']}}</td>
@@ -23,7 +27,7 @@
                         <div class="d-flex flex-column">
                             <div class="d-flex flex-row transfer-buttons">
                                 <div class="p-2">
-                                    <a href="/user/{{$user->id}}/edit"><button type="button" class="btn btn-primary action-buttons">Status</button></a>
+                                    <a href="/redcampadmin/user/{{$user->id}}/edit"><button type="button" class="btn btn-primary action-buttons">Edit</button></a>
                                 </div>
                                 <div class="p-2">
                                     {!!Form::open(['action' => ['UsersController@destroy', $user->id], 'method' => 'POST', 'class' => 'deleteButton'])!!}
@@ -38,8 +42,9 @@
             @endforeach
         </tbody>
     </table>
+    <div class="pagination">
+        {{$users->links()}}
+    </div>
 </div>
-<div class="pagination">
-    {{$users->links()}}
-</div>
+
 @endsection

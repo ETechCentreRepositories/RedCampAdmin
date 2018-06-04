@@ -10438,3 +10438,7 @@ a.text-dark:focus {
   float: right;
 }
 
+.pagination {
+  margin: auto;
+}
+

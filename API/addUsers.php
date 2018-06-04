@@ -10,8 +10,10 @@ $mobile = $_POST["mobile"];
 $school = $_POST["school"];
 $diet = $_POST["diet"];
 $password = $_POST["password"];
+$hash = sha1($password);
 $statuses_id = $_POST["statuses_id"];
-$query_insert_user = "INSERT INTO users (name, email, nric, dob, mobile, school, diet_requirements, password, statuses_id) VALUES ('$name', '$email', '$nric', '$dob', '$mobile', '$school', '$diet', '$password', $statuses_id)";
+$method = $_POST["method"];
+$query_insert_user = "INSERT INTO users (name, email, nric, dob, mobile, school, diet_requirements, password, statuses_id,method) VALUES ('$name', '$email', '$nric', '$dob', '$mobile', '$school', '$diet', '$hash', $statuses_id, '$method')";
 
 $message_200 = "Success";
 $message_401 = "Unauthorized";
@@ -20,9 +22,9 @@ if ($conn) {
     $result = addUser($conn, $query_insert_user);
     if ($result != "") {
         if ($statuses_id == 1) {
-            jsonResponse(200, $message_200, $result, "Almost There!", "Thanks! Your Registration is now pending confirmation\n\nPlease email the redcamp@np.edu.sg with your 'O'Level 2018 Entry Proof, showing clearly your name and identification number, to complete your registration",1);
+            jsonResponse(200, $message_200, $result, "Almost There!", "Thanks! Your Registration is now pending confirmation\n\nPlease email redcamp@np.edu.sg with your 'O'Level 2018 Entry Proof, showing clearly your name and identification number, to complete your registration",1);
         } else if ($statuses_id == 2) {
-            jsonResponse(200, $message_200, $result, "Welcome to Red Camp!", "You Are In!\nMore deets coming through this app as we countdown to the most lit cmap of the year!\nSo, Dont forget to allow notification pop-ups for this RED Camp app!\n\nShare to get your friends on board too!",2);
+            jsonResponse(200, $message_200, $result, "Welcome to Red Camp!", "You Are In!\nMore deets coming through this app as we countdown to the most lit camp of the year!\nSo, Dont forget to allow notification pop-ups for this RED Camp app!\n\nShare to get your friends on board too!",2);
         } else if ($statuses_id == 3) {
             jsonResponse(200, $message_200, $result, "Oops Sorry!", "Thanks! However, we are unable to accept your registration as RED Camp is open only to students taking their 'O'Level exams in 2018. Come back for it in your 'O'Levels.",3);
         }

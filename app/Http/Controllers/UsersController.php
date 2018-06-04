@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\User;
 use App\Student;
 
@@ -82,10 +84,29 @@ class UsersController extends Controller
     {
         $user = Student::find($id);
 
-        $user->statuses_id = $request->input('statuses_id');
+        
+        if ($user->statuses_id != $request->input('statuses_id')){
+            $user->statuses_id = $request->input('statuses_id');
+
+             Mail::send('emails.mailEvent', ['user' => $user], function ($message) use ($user) {
+                 $status = $user->statuses['status_name'];
+                 $message->from('redcamp@np.edu.sg', 'RedCamp');
+                 $message->to($user->email)->subject("RedCamp Application Review");
+             });
+        } else {
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->nric = $request->input('nric');
+            $user->dob = $request->input('dob');
+            $user->mobile = $request->input('mobile');
+            $user->school = $request->input('school');
+            $user->diet_requirements = $request->input('diet_requirements');
+            $user->password = sha1($request['password']);
+            $user->statuses_id = $request->input('statuses_id');
+        }
         $user->save();
 
-        return redirect('/user')->with('success', 'Updated');
+        return redirect('/user')->with('success', 'User Updated');
     }
 
     /**
@@ -101,4 +122,23 @@ class UsersController extends Controller
         $user->delete();
         return redirect('/user')->with('success', 'User Removed');
     }
+
+    public function exportFile($type){
+
+        $userexcel = Student::select('id','name','email','nric','dob','mobile','school','diet_requirements','password')
+                        ->get()->toArray();
+
+        return \Excel::create('user', function($excel) use ($userexcel) {
+
+            $excel->sheet('sheet name', function($sheet) use ($userexcel)
+
+            {
+
+                $sheet->fromArray($userexcel);
+
+            });
+
+        })->download($type);
+
+    }      
 }
