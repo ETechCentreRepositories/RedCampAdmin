@@ -58,14 +58,6 @@
             <input id="diet_requirements" class="form-control" name="diet_requirements" value="{{$user->diet_requirements}}" required autofocus>
         </div>
     </div>
-
-    <div class="form-group row">
-        <label for="password" class="col-sm-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-        <div class="col-md-6">
-            <input id="password" class="form-control" name="password" value="" required autofocus>
-        </div>
-    </div>
     
     <div class="form-group row">
         <label class="col-sm-4 col-form-label text-md-right">{{ __('Status') }}</label>
@@ -86,29 +78,56 @@
     {!! Form::close() !!}
 
     <hr>
-        <div class="centerStatus">
-    <h3>Status</h3>
-    <div class="row">
-    <div class="col-md-5 noPadding">
-    {!! Form::open(['action' => ['UsersController@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-        {{Form::hidden('statuses_id', '3', ['class' => 'form-control'])}}
+
+    <div>
+        <h3>Change Password</h3>
         <br>
-        {{Form::hidden('_method', 'PUT')}}
-        {{Form::submit('Reject', ['class'=>'btn btn-primary btn-lg btn-danger btn-rejected', 'id'=>'rejected','disabled'])}}
-    {!! Form::close() !!}
-    </div>
-    <div class="col-md-5 noPadding">
-    {!! Form::open(['action' => ['UsersController@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-        {{Form::hidden('statuses_id', '2', ['class' => 'form-control'])}}
+        {!! Form::open(['action' => ['UsersController@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+        <div class="form-group row">
+            <label for="password" class="col-sm-4 col-form-label text-md-right">{{ __('Password') }}</label>
+    
+            <div class="col-md-6">
+                <input id="password" class="form-control" name="password" value="" required autofocus>
+            </div>
+        </div>
+        {{Form::hidden('statuses_id', $user->statuses_id, ['class' => 'form-control'])}}
         <br>
-        {{Form::hidden('_method', 'PUT')}}
-        {{Form::submit('Accept', ['class'=>'btn btn-primary btn-lg btn-success btn-accepted', 'id'=>'accepted','disabled'])}}
-    {!! Form::close() !!}
+        {{Form::hidden('_method','PUT')}}
+        <div class="form-group">
+            <div style="text-align:center">
+                <button type="submit" class="btn btn-primary">
+                    Save Password
+                </button>
+            </div>
         </div>
+        {!! Form::close() !!}
     </div>
+
+    <hr>
+
+    <div class="centerStatus">
+        <h3>Change Status</h3>
+        <div class="row">
+        <div class="col-md-5 noPadding">
+        {!! Form::open(['action' => ['UsersController@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+            {{Form::hidden('statuses_id', '3', ['class' => 'form-control'])}}
+            <br>
+            {{Form::hidden('_method', 'PUT')}}
+            {{Form::submit('Reject', ['class'=>'btn btn-primary btn-lg btn-danger btn-rejected', 'id'=>'rejected','disabled'])}}
+        {!! Form::close() !!}
         </div>
-    <br>
-</div>
+        <div class="col-md-5 noPadding">
+        {!! Form::open(['action' => ['UsersController@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+            {{Form::hidden('statuses_id', '2', ['class' => 'form-control'])}}
+            <br>
+            {{Form::hidden('_method', 'PUT')}}
+            {{Form::submit('Accept', ['class'=>'btn btn-primary btn-lg btn-success btn-accepted', 'id'=>'accepted','disabled'])}}
+        {!! Form::close() !!}
+            </div>
+        </div>
+            </div>
+        <br>
+    </div>
 @endsection
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

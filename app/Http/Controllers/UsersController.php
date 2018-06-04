@@ -97,6 +97,9 @@ class UsersController extends Controller
                  $message->from('redcamp@np.edu.sg', 'RedCamp');
                  $message->to($user->email)->subject("RedCamp Application Review");
              });
+        } else if (!empty($request->input('password'))){
+            $user->password = sha1($request['password']);
+            $user->statuses_id = $request->input('statuses_id');
         } else {
             $user->name = $request->input('name');
             $user->email = $request->input('email');
@@ -105,7 +108,6 @@ class UsersController extends Controller
             $user->mobile = $request->input('mobile');
             $user->school = $request->input('school');
             $user->diet_requirements = $request->input('diet_requirements');
-            $user->password = sha1($request['password']);
             $user->statuses_id = $request->input('statuses_id');
         }
         $user->save();

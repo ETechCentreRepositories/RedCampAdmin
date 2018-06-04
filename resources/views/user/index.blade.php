@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <a href="{{ route('export.file',['type'=>'csv']) }}"><button type="button" class="btn btn-export btn-warning">Export</button></a>
-    <br>
+    <br><br>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All</a>
@@ -21,7 +21,7 @@
     <br>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
-            <table class="table table-striped" id="createTransferRequestTable">
+            <table class="table table-striped sortable" id="createTransferRequestTable">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -44,7 +44,7 @@
                                 <div class="d-flex flex-column">
                                     <div class="d-flex flex-row transfer-buttons">
                                         <div class="p-2">
-                                            <a href="/user/{{$user->id}}/edit"><button type="button" class="btn btn-primary action-buttons">Edit</button></a>
+                                            <a href="/redcampadmin/user/{{$user->id}}/edit"><button type="button" class="btn btn-primary action-buttons">Edit</button></a>
                                         </div>
                                         <div class="p-2">
                                             {!!Form::open(['action' => ['UsersController@destroy', $user->id], 'method' => 'POST', 'class' => 'deleteButton'])!!}
@@ -61,7 +61,7 @@
             </table>
         </div>
         <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
-            <table class="table table-striped" id="createTransferRequestTable">
+            <table class="table table-striped sortable" id="createTransferRequestTable">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -101,7 +101,7 @@
             </table>
         </div>
         <div class="tab-pane fade" id="accepted" role="tabpanel" aria-labelledby="accepted-tab">
-            <table class="table table-striped" id="createTransferRequestTable">
+            <table class="table table-striped sortable" id="createTransferRequestTable">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -141,7 +141,7 @@
             </table>
         </div>
         <div class="tab-pane fade" id="rejected" role="tabpanel" aria-labelledby="rejected-tab">
-            <table class="table table-striped" id="createTransferRequestTable">
+            <table class="table table-striped sortable" id="createTransferRequestTable">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -184,3 +184,17 @@
 </div>
 
 @endsection
+
+<style>
+    th:hover{
+        background-color: lightgray;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    .emptyHeader {
+        cursor: default !important;
+        background-color: transparent !important;
+        pointer-events: none !important;
+    }
+</style>
