@@ -10430,15 +10430,51 @@ a.text-dark:focus {
   width: 100%;
 }
 
-.btn-rejected {
-  float: left;
+.pagination {
+  margin: auto;
 }
 
-.btn-accepted {
+.btn-export {
   float: right;
 }
 
+.btn-accepted,
+.btn-rejected {
+  margin-bottom: 5%;
+  width: 35%;
+}
+
+.leftStatus {
+  float: left;
+}
+
+.rightStatus {
+  float: right;
+}
+
+<<<<<<< HEAD
 .pagination {
   margin: auto;
+=======
+<<<<<<< HEAD
+.pagination {
+  margin: auto;
+=======
+.vLine {
+  max-width: 5% !important;
+}
+
+.centerStatus {
+  padding-left: 16.66666667%;
+}
+
+.row {
+  text-align: center;
+}
+
+.noPadding {
+  padding: 0;
+>>>>>>> 20f4afb0505a9c9eb24a57812434405dae213730
+>>>>>>> 8caef330a8d2803d408d3e1baec080b3c24a88bc
 }
 

@@ -201,6 +201,4 @@
         background-color: transparent !important;
         pointer-events: none !important;
     }
-    
-    
 </style>

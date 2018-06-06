@@ -27,5 +27,3 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('export-user/{type}', 'UsersController@exportFile')->name('export.file');
-
-Route::get('/testing', 'ForgetPasswordController@index');
