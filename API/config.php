@@ -1,5 +1,5 @@
 <?php
-header("Content-Type:application/json");
+
 $host = "127.0.0.1";
 $user = "adminredcamp";
 $password = "password";

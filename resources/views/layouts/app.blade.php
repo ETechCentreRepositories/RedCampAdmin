@@ -16,6 +16,9 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="http://localhost:8000/storage/logo/logo.png">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://ehostingcentre.com/redcampadmin/js/sorttable.js"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -25,7 +28,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" style="position: absolute;">
-                    <img src="/storage/logo/logo.png" class="logo" style="width: 40px;"/>
+                    <img src="/redcampadmin/storage/logo/logo.png" class="logo" style="width: 40px;"/>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -38,7 +41,7 @@
                         <li class="navList"><a class="userNav nav-link" href=""><div class="navLabels"></div></a></li>
                         <li class="navList"><a class="userNav nav-link" href=""><div class="navLabels"></div></a></li>
                         <li class="navList"><a class="userNav nav-link" href=""><div class="navLabels"></div></a></li>
-                        <li class="navList"><a class="userNav nav-link" href="/user"><div class="navLabels">Users</div></a></li>
+                        <li class="navList"><a class="userNav nav-link" href="/redcampadmin/user"><div class="navLabels">Users</div></a></li>
                     </ul>
                     @endif
 

@@ -68,6 +68,7 @@ function jsonResponse($status, $status_message, $display_title, $display_message
     $response['display_title'] = $display_title;
     $response['display_message'] = $display_message;
     $response['users'] = $data;
+    $response['method'] = $data[0]["method"];
 
 
     $json_response = json_encode($response);
